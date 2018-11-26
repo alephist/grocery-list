@@ -1,0 +1,56 @@
+<template>
+  <div class="section">
+    <div class="container">
+      <div class="field">
+        <label for="name" class="label">Name:</label>
+        <div class="control">
+          <input type="text" class="input" id="name" v-model="itemName">
+        </div>
+      </div>
+  
+      <div class="field">
+        <label for="quantity" class="label">Quantity:</label>
+        <div class="control">
+          <input type="text" class="input" id="quantity" v-model.number="itemQuantity">
+        </div>
+      </div>
+  
+      <div class="field">
+        <div class="control">
+          <button class="button is-link" @click="addItem">Add Item</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ItemInput',
+  data() {
+    return {
+      itemName: '',
+      itemQuantity: null
+    };
+  },
+  methods: {
+    addItem() {
+      if (this.itemName && this.itemQuantity) {
+        let item = {
+          text: this.itemName,
+          quantity: this.itemQuantity,
+          inCart: false
+        };
+
+        this.$emit('onAddItem', item);
+
+        this.itemName = '';
+        this.itemQuantity = null;
+      }
+    }
+  }
+};
+</script>
+
+<style>
+</style>

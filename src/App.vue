@@ -1,28 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <ItemInput @onAddItem="handleAddItem" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ItemInput from './components/ItemInput';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    ItemInput
+  },
+  data() {
+    return {
+      itemList: []
+    };
+  },
+  methods: {
+    handleAddItem(item) {
+      this.itemList.push(item);
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
