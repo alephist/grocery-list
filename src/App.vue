@@ -1,5 +1,13 @@
 <template>
   <div>
+    <header class="hero is-info">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title has-text-centered">Grocery List App</h1>
+        </div>
+      </div>
+    </header>
+
     <ItemInput @onAddItem="handleAddItem"/>
     <ItemList :list="itemList" @onRemoveItem="handleRemoveItem"/>
   </div>
