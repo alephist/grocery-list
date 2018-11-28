@@ -1,16 +1,19 @@
 <template>
   <div>
-    <ItemInput @onAddItem="handleAddItem" />
+    <ItemInput @onAddItem="handleAddItem"/>
+    <ItemList :list="itemList" @onRemoveItem="handleRemoveItem"/>
   </div>
 </template>
 
 <script>
-import ItemInput from './components/ItemInput';
+import ItemInput from "./components/ItemInput";
+import ItemList from "./components/ItemList";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    ItemInput
+    ItemInput,
+    ItemList
   },
   data() {
     return {
@@ -20,6 +23,10 @@ export default {
   methods: {
     handleAddItem(item) {
       this.itemList.push(item);
+    },
+    handleRemoveItem(item) {
+      let index = this.itemList.indexOf(item);
+      this.itemList.splice(index, 1);
     }
   }
 };

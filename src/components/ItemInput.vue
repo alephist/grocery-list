@@ -1,20 +1,22 @@
 <template>
   <div class="section">
     <div class="container">
+      <h1 class="title">Add New Item</h1>
+
       <div class="field">
         <label for="name" class="label">Name:</label>
         <div class="control">
           <input type="text" class="input" id="name" v-model="itemName">
         </div>
       </div>
-  
+
       <div class="field">
         <label for="quantity" class="label">Quantity:</label>
         <div class="control">
-          <input type="text" class="input" id="quantity" v-model.number="itemQuantity">
+          <input type="number" class="input" id="quantity" v-model.number="itemQuantity">
         </div>
       </div>
-  
+
       <div class="field">
         <div class="control">
           <button class="button is-link" @click="addItem">Add Item</button>
@@ -26,10 +28,10 @@
 
 <script>
 export default {
-  name: 'ItemInput',
+  name: "ItemInput",
   data() {
     return {
-      itemName: '',
+      itemName: "",
       itemQuantity: null
     };
   },
@@ -42,9 +44,9 @@ export default {
           inCart: false
         };
 
-        this.$emit('onAddItem', item);
+        this.$emit("onAddItem", item);
 
-        this.itemName = '';
+        this.itemName = "";
         this.itemQuantity = null;
       }
     }
