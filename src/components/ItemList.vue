@@ -5,22 +5,13 @@
 
       <table class="table is-fullwidth is-bordered" v-if="list.length">
         <tbody>
-          <tr v-for="item in list" :key="item.text">
-            <td @click="toggleCartStatus(item)">
-              <span class="icon" :class="[ item.inCart ? 'has-text-info' : 'has-text-danger']">
-                <i class="fas fa-check-circle"></i>
-              </span>
-              {{ item.text }} ({{ item.quantity }})
-              <button
-                class="button is-danger is-small is-pulled-right"
-                @click="removeItem(item)"
-              >
-                <span class="icon">
-                  <i class="far fa-trash-alt"></i>
-                </span>
-              </button>
-            </td>
-          </tr>
+          <Item
+            v-for="item in list"
+            :key="item.text"
+            :item="item"
+            @onToggleCartStatus="toggleCartStatus"
+            @onRemoveItem="removeItem"
+          />
         </tbody>
       </table>
 
@@ -30,14 +21,19 @@
 </template>
 
 <script>
+import Item from "./Item";
+
 export default {
   name: "ItemList",
   props: {
     list: Array
   },
+  components: {
+    Item
+  },
   methods: {
     toggleCartStatus(item) {
-      item.inCart = !item.inCart;
+      this.$emit("onToggleCartStatus", item);
     },
     removeItem(item) {
       this.$emit("onRemoveItem", item);
@@ -46,9 +42,6 @@ export default {
 };
 </script>
 
-<style scoped>
-tr {
-  cursor: pointer;
-}
+<style>
 </style>
 

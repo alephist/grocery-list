@@ -9,7 +9,11 @@
     </header>
 
     <ItemInput @onAddItem="handleAddItem"/>
-    <ItemList :list="itemList" @onRemoveItem="handleRemoveItem"/>
+    <ItemList
+      :list="itemList"
+      @onRemoveItem="handleRemoveItem"
+      @onToggleCartStatus="handleToggleCartStatus"
+    />
   </div>
 </template>
 
@@ -35,6 +39,9 @@ export default {
     handleRemoveItem(item) {
       let index = this.itemList.indexOf(item);
       this.itemList.splice(index, 1);
+    },
+    handleToggleCartStatus(item) {
+      item.inCart = !item.inCart;
     }
   }
 };
