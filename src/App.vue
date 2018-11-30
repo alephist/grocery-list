@@ -8,12 +8,18 @@
       </div>
     </header>
 
-    <ItemInput @onAddItem="handleAddItem"/>
-    <ItemList
-      :list="itemList"
-      @onRemoveItem="handleRemoveItem"
-      @onToggleCartStatus="handleToggleCartStatus"
-    />
+    <div class="section">
+      <div class="container">
+        <div class="columns is-variable is-6">
+          <ItemInput @onAddItem="handleAddItem"/>
+          <ItemList
+            :list="itemList"
+            @onRemoveItem="handleRemoveItem"
+            @onToggleCartStatus="handleToggleCartStatus"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

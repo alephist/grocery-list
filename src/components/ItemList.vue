@@ -1,22 +1,20 @@
 <template>
-  <div class="section">
-    <div class="container">
-      <h1 class="title">Item List</h1>
+  <div class="column is-6">
+    <h1 class="title">Item List</h1>
 
-      <table class="table is-fullwidth is-bordered" v-if="list.length">
-        <tbody>
-          <Item
-            v-for="item in list"
-            :key="item.text"
-            :item="item"
-            @onToggleCartStatus="toggleCartStatus"
-            @onRemoveItem="removeItem"
-          />
-        </tbody>
-      </table>
+    <table class="table is-fullwidth is-bordered" v-if="list.length">
+      <tbody>
+        <Item
+          v-for="item in list"
+          :key="item.text"
+          :item="item"
+          @onToggleCartStatus="toggleCartStatus"
+          @onRemoveItem="removeItem"
+        />
+      </tbody>
+    </table>
 
-      <div class="notification is-danger" v-else>There are currently no items in list.</div>
-    </div>
+    <div class="notification is-danger" v-else>There are currently no items in list.</div>
   </div>
 </template>
 
