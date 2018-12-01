@@ -10,6 +10,8 @@
           :item="item"
           @onToggleCartStatus="toggleCartStatus"
           @onRemoveItem="removeItem"
+          @onIncrementQuantity="incrementQuantity"
+          @onDecrementQuantity="decrementQuantity"
         />
       </tbody>
     </table>
@@ -35,6 +37,12 @@ export default {
     },
     removeItem(item) {
       this.$emit("onRemoveItem", item);
+    },
+    incrementQuantity(item) {
+      this.$emit("onIncrementQuantity", item);
+    },
+    decrementQuantity(item) {
+      this.$emit("onDecrementQuantity", item);
     }
   }
 };

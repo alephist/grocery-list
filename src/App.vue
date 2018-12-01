@@ -16,6 +16,8 @@
             :list="itemList"
             @onRemoveItem="handleRemoveItem"
             @onToggleCartStatus="handleToggleCartStatus"
+            @onIncrementQuantity="handleIncrementQuantity"
+            @onDecrementQuantity="handleDecrementQuantity"
           />
         </div>
       </div>
@@ -48,6 +50,12 @@ export default {
     },
     handleToggleCartStatus(item) {
       item.inCart = !item.inCart;
+    },
+    handleIncrementQuantity(item) {
+      item.quantity++;
+    },
+    handleDecrementQuantity(item) {
+      item.quantity === 0 ? (item.quantity = 0) : item.quantity--;
     }
   }
 };
