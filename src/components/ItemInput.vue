@@ -25,6 +25,8 @@
 </template>
 
 <script>
+const uuidv4 = require('uuid/v4');
+
 export default {
   name: "ItemInput",
   data() {
@@ -37,6 +39,7 @@ export default {
     addItem() {
       if (this.itemName && this.itemQuantity) {
         let item = {
+          id: uuidv4(),
           text: this.itemName,
           quantity: this.itemQuantity,
           inCart: false

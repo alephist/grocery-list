@@ -6,7 +6,7 @@
       <tbody>
         <Item
           v-for="item in list"
-          :key="item.text"
+          :key="item.id"
           :item="item"
           @onToggleCartStatus="toggleCartStatus"
           @onRemoveItem="removeItem"
