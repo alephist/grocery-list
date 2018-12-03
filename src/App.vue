@@ -43,20 +43,33 @@ export default {
   methods: {
     handleAddItem(item) {
       this.itemList.push(item);
+      this.saveItems(this.itemList);
     },
     handleRemoveItem(item) {
       let index = this.itemList.indexOf(item);
       this.itemList.splice(index, 1);
+      this.saveItems(this.itemList);
     },
     handleToggleCartStatus(item) {
       item.inCart = !item.inCart;
+      this.saveItems(this.itemList);
     },
     handleIncrementQuantity(item) {
       item.quantity++;
+      this.saveItems(this.itemList);
     },
     handleDecrementQuantity(item) {
       item.quantity === 0 ? (item.quantity = 0) : item.quantity--;
+      this.saveItems(this.itemList);
+    },
+    saveItems(list) {
+      localStorage.setItem("items", JSON.stringify(list));
     }
+  },
+  created() {
+    this.itemList = localStorage.getItem("items")
+      ? JSON.parse(localStorage.getItem("items"))
+      : [];
   }
 };
 </script>
